@@ -1,2 +1,2 @@
-**一个简单的类似番茄钟的软件， 点我下载[安装包](https://gitee.com/easecat_gitee/Timer/releases/tag/Timer_v1.02)、[源码包](https://gitee.com/easecat_gitee/Timer/blob/master/WindowsFormsApp1.rar)**<br/><br/>
+**一个简单的类似番茄钟的软件， 点我下载（[安装包](https://gitee.com/easecat_gitee/Timer/releases/tag/Timer_v1.02)、[源码包](https://gitee.com/easecat_gitee/Timer/blob/master/WindowsFormsApp1.rar)）**<br/><br/>
 ![输入图片说明](images/image.png)
