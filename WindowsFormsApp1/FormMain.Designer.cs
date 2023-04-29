@@ -110,7 +110,6 @@
             this.checkBoxAuto.TabIndex = 4;
             this.checkBoxAuto.Text = "休息完毕自动开始工作计时";
             this.checkBoxAuto.UseVisualStyleBackColor = true;
-            this.checkBoxAuto.CheckedChanged += new System.EventHandler(this.CheckBoxAuto_CheckedChanged);
             // 
             // buttonBegin
             // 

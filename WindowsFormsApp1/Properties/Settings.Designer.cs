@@ -22,5 +22,29 @@ namespace WorkAndRest.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("下课铃声.mp3")]
+        public string 工作 {
+            get {
+                return ((string)(this["工作"]));
+            }
+            set {
+                this["工作"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("你笑起来真好看.mp3")]
+        public string 休息 {
+            get {
+                return ((string)(this["休息"]));
+            }
+            set {
+                this["休息"] = value;
+            }
+        }
     }
 }

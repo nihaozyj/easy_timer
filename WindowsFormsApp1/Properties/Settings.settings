@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WorkAndRest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="工作" Type="System.String" Scope="User">
+      <Value Profile="(Default)">下课铃声.mp3</Value>
+    </Setting>
+    <Setting Name="休息" Type="System.String" Scope="User">
+      <Value Profile="(Default)">你笑起来真好看.mp3</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

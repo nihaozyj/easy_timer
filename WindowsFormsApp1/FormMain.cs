@@ -6,8 +6,6 @@ namespace WorkAndRest
 {
     public partial class FormMain : Form
     {
-        public static Settings settings = new Settings();
-
         // 程序中频繁需要用到的变量，分别为“当前状态结束的时间（毫秒级时间戳）”、“工作的时间（分钟）”、“休息的时间（分钟）”、“代表结束时间到开始时间的时间间隔，即timestamp-当前时间戳”
         private long timestamp, gi = 50, xi = 10, spacing = 50 * 60 * 1000;
 
@@ -15,8 +13,6 @@ namespace WorkAndRest
         private bool isClose = false;
         // 当前的计时线程
         private Thread threadTimekeeping = null;
-        // 休息结束后是否自动开始重新计时
-        private bool isAuto;
         // 计时器
         public static long timekeeping;
         // 当前状态(工作/休息) 默认为休息
@@ -46,7 +42,6 @@ namespace WorkAndRest
         {
             comboBoxGTime.SelectedIndex = 3;
             comboBoxXTime.SelectedIndex = 1;
-            checkBoxAuto.Checked = isAuto = true;
         }
 
         private void 退出程序ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -66,10 +61,6 @@ namespace WorkAndRest
             Show();
         }
 
-        private void CheckBoxAuto_CheckedChanged(object sender, EventArgs e)
-        {
-            isAuto = checkBoxAuto.Checked;
-        }
 
         private void buttonPause_Click(object sender, EventArgs e)
         {
@@ -132,7 +123,10 @@ namespace WorkAndRest
 
                     spacing = timekeeping - timestamp;
 
-                    label4.Text = $"倒计时：{ spacing / 1000 / 60:D2}:{ (spacing / 1000) % 60:D2}";
+                    label4.Invoke(new Action(() =>
+                    {
+                        label4.Text = $"倒计时：{ spacing / 1000 / 60:D2}:{ (spacing / 1000) % 60:D2}";
+                    }));
 
                     Thread.Sleep(500);
                 }
@@ -142,23 +136,20 @@ namespace WorkAndRest
                 threadTimekeeping = null;
             });
 
-
-
             threadTimekeeping.Start();
         }
 
         // 当前状态的计时器结束，参数为true时表示自动开始下一个状态的计时
         private void TimerEnd(bool isAuto)
         {
+            if (buttonBegin.Enabled) return;
+
             if (state)
-                axWindowsMediaPlayer.URL = ".\\resources\\" + FormMain.settings.工作;
+                axWindowsMediaPlayer.URL = ".\\resources\\" + Properties.Settings.Default.工作;
             else
-                axWindowsMediaPlayer.URL = ".\\resources\\" + FormMain.settings.休息;
+                axWindowsMediaPlayer.URL = ".\\resources\\" + Properties.Settings.Default.休息;
 
             axWindowsMediaPlayer.Ctlcontrols.play();
-
-            buttonPause.Enabled = buttonOver.Enabled = false;
-            buttonBegin.Enabled = true;
 
             if (isAuto) Button1_Click(null, null);
         }
@@ -192,7 +183,6 @@ namespace WorkAndRest
                 timekeeping = timestamp + gi * 60 * 1000;
             else
                 timekeeping = timestamp + xi * 60 * 1000;
-
 
             label3.Text = state ? "工作中" : "休息中";
 

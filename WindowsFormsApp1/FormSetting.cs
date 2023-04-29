@@ -22,10 +22,10 @@ namespace WorkAndRest
                 if (suffix != ".wav" && suffix != ".mp3") continue;
 
                 comboBox1.Items.Add(name);
-                if (name == FormMain.settings.工作) comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
+                if (name == Properties.Settings.Default.工作) comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
 
                 comboBox2.Items.Add(name);
-                if (name == FormMain.settings.休息) comboBox2.SelectedIndex = comboBox1.Items.Count - 1;
+                if (name == Properties.Settings.Default.休息) comboBox2.SelectedIndex = comboBox1.Items.Count - 1;
             }
 
             // 事件在这里注册的原因是，上方初始化会导致索引变更，会重复触发
@@ -47,9 +47,9 @@ namespace WorkAndRest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormMain.settings.工作 = comboBox1.Text;
-            FormMain.settings.休息 = comboBox2.Text;
-            FormMain.settings.Save();
+            Properties.Settings.Default.工作 = comboBox1.Text;
+            Properties.Settings.Default.休息 = comboBox2.Text;
+            Properties.Settings.Default.Save();
             Close();
         }
     }
