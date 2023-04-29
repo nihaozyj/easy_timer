@@ -1,0 +1,9 @@
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormMain.resources
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\工作与休息.exe.config
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\工作与休息.exe
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\工作与休息.pdb
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\工作与休息.exe
+C:\Users\nihao\Desktop\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\工作与休息.pdb
