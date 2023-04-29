@@ -33,11 +33,6 @@ namespace WorkAndRest
             Hide();
         }
 
-        private void NotifyIcon_Click(object sender, EventArgs e)
-        {
-            Show();
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             comboBoxGTime.SelectedIndex = 3;
@@ -110,6 +105,11 @@ namespace WorkAndRest
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new FormSetting().Show();
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) Show();
         }
 
         private void BeginTimekeeping()
