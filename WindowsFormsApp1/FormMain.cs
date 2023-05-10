@@ -144,12 +144,18 @@ namespace WorkAndRest
         {
             if (buttonBegin.Enabled) return;
 
-            if (state)
-                axWindowsMediaPlayer.URL = ".\\resources\\" + Properties.Settings.Default.工作;
-            else
-                axWindowsMediaPlayer.URL = ".\\resources\\" + Properties.Settings.Default.休息;
+            axWindowsMediaPlayer.URL = ".\\resources\\" + ( state ? Properties.Settings.Default.工作 : Properties.Settings.Default.休息 );
+
+            var tips = state ? "工作时间结束了，快休息一会儿吧!" : "休息时间结束了，快去工作吧!";
 
             axWindowsMediaPlayer.Ctlcontrols.play();
+
+            Thread.Sleep(1000);
+
+            Invoke(new Action(() =>
+            {
+                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * 1000, tips).Show();
+            }));
 
             if (isAuto) Button1_Click(null, null);
         }
@@ -178,11 +184,11 @@ namespace WorkAndRest
                 case " 20 分钟": xi = 20; break;
                 case " 30 分钟": xi = 30; break;
             }
-            
+
             if (state)
                 timekeeping = timestamp + gi * 60 * 1000;
             else
-                timekeeping = timestamp + xi * 60 * 1000;
+                timekeeping = timestamp + xi * 60 * 1000; 
 
             label3.Text = state ? "工作中" : "休息中";
 
