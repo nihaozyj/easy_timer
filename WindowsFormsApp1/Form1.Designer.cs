@@ -37,13 +37,14 @@
             this.label1.Location = new System.Drawing.Point(10, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(351, 38);
+            this.label1.Size = new System.Drawing.Size(448, 49);
             this.label1.TabIndex = 0;
             this.label1.Text = "休息结束了，开始工作吧！";
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // FormTips
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(22F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 63);
             this.Controls.Add(this.label1);
@@ -55,6 +56,7 @@
             this.Text = "Form1";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FormTips_Load);
+            this.Click += new System.EventHandler(this.FormTips_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

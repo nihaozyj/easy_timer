@@ -13,11 +13,13 @@ namespace WorkAndRest
         private bool isClose = false;
         // 当前的计时线程
         private Thread threadTimekeeping = null;
+        // 当前计时器线程的状态，为false是线程结束
+        private bool threadState = false;
         // 计时器
         public static long timekeeping;
         // 当前状态(工作/休息) 默认为休息
         public static bool state = false;
-
+        
 
         public FormMain()
         {
@@ -68,7 +70,7 @@ namespace WorkAndRest
             buttonPause.Text = "继续";
 
             // 防止线程结束失败， 这里终止线程继续执行的条件
-            timestamp = timekeeping + 10000;
+            threadState = false;
 
             threadTimekeeping = null;
         }
@@ -77,6 +79,7 @@ namespace WorkAndRest
         {
             buttonPause.Text = "暂停";
 
+            threadState = true;
             timestamp = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             timekeeping = timestamp + spacing;
 
@@ -117,7 +120,7 @@ namespace WorkAndRest
 
             threadTimekeeping = new Thread(() =>
             {
-                while (timekeeping > timestamp)
+                while (threadState && timekeeping > timestamp)
                 {
                     timestamp = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
 
@@ -131,7 +134,7 @@ namespace WorkAndRest
                     Thread.Sleep(500);
                 }
 
-                TimerEnd(checkBoxAuto.Checked);
+                if(threadState) TimerEnd(checkBoxAuto.Checked);
 
                 threadTimekeeping = null;
             });
@@ -149,12 +152,13 @@ namespace WorkAndRest
             var tips = state ? "工作时间结束了，快休息一会儿吧!" : "休息时间结束了，快去工作吧!";
 
             axWindowsMediaPlayer.Ctlcontrols.play();
+            int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 2);
 
             Thread.Sleep(1000);
 
             Invoke(new Action(() =>
             {
-                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * 1000, tips).Show();
+                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 1000, tips).Show();
             }));
 
             if (isAuto) Button1_Click(null, null);
@@ -191,6 +195,8 @@ namespace WorkAndRest
                 timekeeping = timestamp + xi * 60 * 1000; 
 
             label3.Text = state ? "工作中" : "休息中";
+
+            threadState = true;
 
             // 开始计时，初始时该值为false
             state = !state;

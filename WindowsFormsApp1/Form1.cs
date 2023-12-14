@@ -8,6 +8,8 @@ namespace WorkAndRest
     {
         private int _time;
 
+        private Thread threadHide, threadShow;
+
         public FormTips(int time, string msg)
         {
             InitializeComponent();
@@ -24,8 +26,10 @@ namespace WorkAndRest
         }
 
         private void FormTips_Load(object sender, EventArgs e)
-        { 
-            var threadHide = new Thread(() =>
+        {
+            ShowInTaskbar = false;
+
+            threadHide = new Thread(() =>
             {
                 Thread.Sleep(_time);
                 
@@ -42,7 +46,7 @@ namespace WorkAndRest
                 Close();
             });
 
-            var threadShow = new Thread(() =>
+            threadShow = new Thread(() =>
             {
                 int screenWidth = Left;
 
@@ -59,6 +63,33 @@ namespace WorkAndRest
             });
 
             threadShow.Start();
+        }
+
+        private void HideWindow()
+        {
+            threadHide.Abort();
+
+            for (double i = 1; i >= 0; i -= 0.1)
+            {
+                Thread.Sleep(20);
+
+                Invoke(new Action(() =>
+                {
+                    Opacity = i;
+                }));
+            }
+
+            Close();
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+            HideWindow();
+        }
+
+        private void FormTips_Click(object sender, EventArgs e)
+        {
+            HideWindow();
         }
     }
 }
