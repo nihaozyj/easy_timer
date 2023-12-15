@@ -90,7 +90,7 @@ namespace WorkAndRest
         private void ButtonOver_Click(object sender, EventArgs e)
         {
             // 结束计时器线程
-            timestamp = timekeeping + 10000;
+            threadState = false;
             threadTimekeeping = null;
 
             label4.Text = "倒计时: 00:00";
@@ -158,7 +158,7 @@ namespace WorkAndRest
 
             Invoke(new Action(() =>
             {
-                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 1000, tips).Show();
+                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 1000, tips, axWindowsMediaPlayer).Show();
             }));
 
             if (isAuto) Button1_Click(null, null);
@@ -192,7 +192,7 @@ namespace WorkAndRest
             if (state)
                 timekeeping = timestamp + gi * 60 * 1000;
             else
-                timekeeping = timestamp + xi * 60 * 1000; 
+                timekeeping = timestamp + 10000;//xi * 60 * 1000; 
 
             label3.Text = state ? "工作中" : "休息中";
 

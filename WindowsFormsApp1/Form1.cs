@@ -10,11 +10,15 @@ namespace WorkAndRest
 
         private Thread threadHide, threadShow;
 
-        public FormTips(int time, string msg)
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer;
+
+        public FormTips(int time, string msg, AxWMPLib.AxWindowsMediaPlayer ax)
         {
             InitializeComponent();
 
             _time = time;
+
+            axWindowsMediaPlayer = ax;
 
             label1.Text = msg;
 
@@ -78,6 +82,8 @@ namespace WorkAndRest
                     Opacity = i;
                 }));
             }
+
+            axWindowsMediaPlayer.Ctlcontrols.stop();
 
             Close();
         }

@@ -38,3 +38,4 @@ C:\Users\nihao\Desktop\Timer\WindowsFormsApp1\obj\Debug\工作休息时间管理
 C:\Users\nihao\Desktop\Timer\WindowsFormsApp1\obj\Debug\工作休息时间管理.application
 C:\Users\nihao\Desktop\Timer\WindowsFormsApp1\obj\Debug\工作休息时间管理.exe
 C:\Users\nihao\Desktop\Timer\WindowsFormsApp1\obj\Debug\工作休息时间管理.pdb
+C:\Users\nihao\Desktop\Timer\WindowsFormsApp1\obj\Debug\工作休息时间管理.csprojAssemblyReference.cache
