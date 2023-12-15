@@ -192,7 +192,7 @@ namespace WorkAndRest
             if (state)
                 timekeeping = timestamp + gi * 60 * 1000;
             else
-                timekeeping = timestamp + 10000;//xi * 60 * 1000; 
+                timekeeping = timestamp + xi * 60 * 1000; 
 
             label3.Text = state ? "工作中" : "休息中";
 
