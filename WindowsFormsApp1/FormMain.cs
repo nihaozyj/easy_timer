@@ -149,16 +149,14 @@ namespace WorkAndRest
 
             axWindowsMediaPlayer.URL = ".\\resources\\" + ( state ? Properties.Settings.Default.工作 : Properties.Settings.Default.休息 );
 
-            var tips = state ? "工作时间结束了，快休息一会儿吧!" : "休息时间结束了，快去工作吧!";
+            var tips = !state ? "工作时间结束!" : "休息时间结束!";
 
             axWindowsMediaPlayer.Ctlcontrols.play();
             int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 2);
 
-            Thread.Sleep(1000);
-
             Invoke(new Action(() =>
             {
-                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 1000, tips, axWindowsMediaPlayer).Show();
+                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 900 /** 此次为1000毫秒，由于获取的时间貌似不准，因此使用900来减少获取的时间长度 */, tips, axWindowsMediaPlayer).Show();
             }));
 
             if (isAuto) Button1_Click(null, null);
@@ -190,9 +188,9 @@ namespace WorkAndRest
             }
 
             if (state)
-                timekeeping = timestamp + gi * 60 * 1000;
+                timekeeping = timestamp + (gi * 60 * 1000);
             else
-                timekeeping = timestamp + xi * 60 * 1000; 
+                timekeeping = timestamp + (xi * 60 * 1000); 
 
             label3.Text = state ? "工作中" : "休息中";
 

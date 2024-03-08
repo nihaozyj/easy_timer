@@ -16,7 +16,10 @@ namespace WorkAndRest
         {
             InitializeComponent();
 
-            _time = time;
+            ShowInTaskbar = false;
+            TopMost = true;
+
+            _time = time < 3 * 1000 ? 3000 : time;
 
             axWindowsMediaPlayer = ax;
 
@@ -26,13 +29,12 @@ namespace WorkAndRest
             Height = label1.Height + 20;
 
             Left = Screen.PrimaryScreen.WorkingArea.Width;
+
             Top = 100;
         }
 
         private void FormTips_Load(object sender, EventArgs e)
         {
-            ShowInTaskbar = false;
-
             threadHide = new Thread(() =>
             {
                 Thread.Sleep(_time);
@@ -54,7 +56,7 @@ namespace WorkAndRest
             {
                 int screenWidth = Left;
 
-                for (int left = screenWidth; left >= screenWidth - (Width + 20); left -= 20)
+                for (int left = screenWidth; left >= screenWidth - (Width + 30); left -= 20)
                 {
                     Left = left;
 

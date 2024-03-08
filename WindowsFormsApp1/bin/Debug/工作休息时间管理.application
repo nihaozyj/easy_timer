@@ -4,17 +4,17 @@
   <description asmv2:publisher="暴走の毛毛虫" asmv2:product="工作&amp;休息 - 时间管理" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.6.1" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="工作休息时间管理.exe.manifest" size="8152">
+    <dependentAssembly dependencyType="install" codebase="工作休息时间管理.exe.manifest" size="8163">
       <assemblyIdentity name="工作休息时间管理.exe" version="1.0.0.24" publicKeyToken="0000000000000000" language="zh-CN" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4FDF7x5qMH6l5n/oqjrvkDR8rnQBl7Wnz1IENsupMVw=</dsig:DigestValue>
+        <dsig:DigestValue>Dc/Sby2MbzftY06D7gQLJ3hlt4HUnCMsCXF27rxV+Q0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
