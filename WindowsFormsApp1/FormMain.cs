@@ -152,11 +152,12 @@ namespace WorkAndRest
             var tips = !state ? "工作时间结束!" : "休息时间结束!";
 
             axWindowsMediaPlayer.Ctlcontrols.play();
-            int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 2);
+
+            int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 3) * 1000;
 
             Invoke(new Action(() =>
             {
-                new FormTips((int)Math.Floor(axWindowsMediaPlayer.currentMedia.duration) * durationInSeconds * 900 /** 此次为1000毫秒，由于获取的时间貌似不准，因此使用900来减少获取的时间长度 */, tips, axWindowsMediaPlayer).Show();
+                new FormTips(durationInSeconds, tips, axWindowsMediaPlayer).Show();
             }));
 
             if (isAuto) Button1_Click(null, null);

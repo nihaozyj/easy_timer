@@ -19,7 +19,7 @@ namespace WorkAndRest
             ShowInTaskbar = false;
             TopMost = true;
 
-            _time = time < 3 * 1000 ? 3000 : time;
+            _time = time;
 
             axWindowsMediaPlayer = ax;
 
