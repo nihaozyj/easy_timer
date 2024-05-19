@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -151,12 +151,11 @@ namespace WorkAndRest
 
             var tips = !state ? "工作时间结束!" : "休息时间结束!";
 
-            axWindowsMediaPlayer.Ctlcontrols.play();
-
-            int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 3) * 1000;
-
             Invoke(new Action(() =>
             {
+                axWindowsMediaPlayer.Ctlcontrols.play();
+                Thread.Sleep(200);
+                int durationInSeconds = Math.Max((int)axWindowsMediaPlayer.Ctlcontrols.currentItem.duration, 3) * 1000;
                 new FormTips(durationInSeconds, tips, axWindowsMediaPlayer).Show();
             }));
 
